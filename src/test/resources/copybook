@@ -1,0 +1,71 @@
+000000   01  GRP  .                                                     xxxxxxxx
+000000   03  N-01 PIC 99999 USAGE DISPLAY VALUE ZEROES.                 xxxxxxxx
+000000   03  N-02 PIC 99(4)  .                                          xxxxxxxx
+000000   03  N-03 PIC 9(4)9  .                                          xxxxxxxx
+000000   03  N-04 PIC 9(2)9(3)  .                                       xxxxxxxx
+000000   03  N-05 PIC 9(5)  .                                           xxxxxxxx
+000000   03  N-06 PIC 9(5)V  .                                          xxxxxxxx
+000000   03  N-07 PIC S9(5)  .                                          xxxxxxxx
+000000   03  N-08 PIC S9(5)V  .                                         xxxxxxxx
+000000   03  N-09 PIC +9(5)  .                                          xxxxxxxx
+000000   03  N-10 PIC +9(5)V  .                                         xxxxxxxx
+000000   03  N-11 PIC -9(5)  .                                          xxxxxxxx
+000000   03  N-12 PIC -9(5)V  .                                         xxxxxxxx
+000000   03  N-13 PIC 9(5)+  .                                          xxxxxxxx
+000000   03  N-14 PIC 9(5)V+  .                                         xxxxxxxx
+000000   03  N-15 PIC 9(5)-  .                                          xxxxxxxx
+000000   03  N-16 PIC 99(4)V-  .                                        xxxxxxxx
+000000   03  N-17 PIC ZZ09(2)V-  .                                      xxxxxxxx
+000000   03  N-18 PIC ---99  .                                          xxxxxxxx
+000000*     N-19    .                                                   xxxxxxxx
+000000   03  N-20 PIC 999V99  .                                         xxxxxxxx
+000000   03  N-21 PIC 99(2)V99  .                                       xxxxxxxx
+000000   03  N-22 PIC 9(3)V9(2)  .                                      xxxxxxxx
+000000   03  N-23 PIC 9(3).9(2)  .                                      xxxxxxxx
+000000   03  N-24 PIC S9(3)V9(2)  .                                     xxxxxxxx
+000000   03  N-25 PIC S9(3).9(2)  .                                     xxxxxxxx
+000000   03  N-26 PIC +9(3)V9(2)  .                                     xxxxxxxx
+000000   03  N-27 PIC +9(3).9(2)  .                                     xxxxxxxx
+000000   03  N-28 PIC -9(3)V9(2)  .                                     xxxxxxxx
+000000   03  N-29 PIC -9(3).9(2)  .                                     xxxxxxxx
+000000   03  N-30 PIC 9(3)V9(2)+  .                                     xxxxxxxx
+000000   03  N-31 PIC 9(3).9(2)+  .                                     xxxxxxxx
+000000   03  N-32 PIC 9(3)V9(2)-  .                                     xxxxxxxx
+000000   03  N-33 PIC 9(3).9(2)-  .                                     xxxxxxxx
+000000   03  N-34 PIC Z09.9(2)-  .                                      xxxxxxxx
+000000*     N-35    .                                                   xxxxxxxx
+000000   03  N-36 PIC AAAAA  .                                          xxxxxxxx
+000000   03  N-37 PIC AA(4)  .                                          xxxxxxxx
+000000   03  N-38 PIC A(4)A  .                                          xxxxxxxx
+000000   03  N-39 PIC A(2)A(3)  .                                       xxxxxxxx
+000000   03  N-40 PIC XXXXX  .                                          xxxxxxxx
+000000   03  N-41 PIC XX(4)  .                                          xxxxxxxx
+000000   03  N-42 PIC X(4)X  .                                          xxxxxxxx
+000000   03  N-43 PIC X(2)X(3)  .                                       xxxxxxxx
+000000   03  N-44 PIC XAAXX  .                                          xxxxxxxx
+000000   03  N-45 PIC X(2)A(2)9  .                                      xxxxxxxx
+000000   03  N-46 PIC BAAXX9  .                                         xxxxxxxx
+000000   03  N-47 PIC AX99BA  .                                         xxxxxxxx
+000000   03  N-48 PIC AX/X99  .                                         xxxxxxxx
+000000*   03  N-49 PIC   .                                              xxxxxxxx
+000000   03  N-50 PIC S9(4) USAGE COMP .                                xxxxxxxx
+000000   03  N-51 PIC S9(4) USAGE IS COMP .                             xxxxxxxx
+000000   03  N-52 PIC S9(4) COMP .                                      xxxxxxxx
+000000   03  REDEFINES N-52 PIC X(2)  .                                 xxxxxxxx
+000000   03  N-54   COMP-1 .                                            xxxxxxxx
+000000   03  N-55   COMPUTATIONAL-1 .                                   xxxxxxxx
+000000   03  N-56   COMP-2 .                                            xxxxxxxx
+000000   03  N-57   COMPUTATIONAL-2 .                                   xxxxxxxx
+000000   03  N-58 PIC S9(4) COMP-3 .                                    xxxxxxxx
+000000   03  N-59 PIC S9(4) COMPUTATIONAL-3 .                           xxxxxxxx
+000000   03  N-60 PIC S9(4) COMP-4 .                                    xxxxxxxx
+000000   03  N-61 PIC S9(4) COMPUTATIONAL-4 .                           xxxxxxxx
+000000   03  N-62 PIC S9(4) COMP-5 .                                    xxxxxxxx
+000000   03  N-63 PIC S9(4) COMPUTATIONAL-5 .                           xxxxxxxx
+000000   03  N-64 PIC S9(4) BINARY .                                    xxxxxxxx
+000000   03  N-65 PIC X(1)  VALUE 'N'.                                  xxxxxxxx
+000000   88  NO      VALUE IS 'N'.                                      xxxxxxxx
+000000   88  YES     VALUE 'Y'.                                         xxxxxxxx
+000000   88  INITIAL  VALUES 'A', 'B', 'C'.                             xxxxxxxx
+000000   88  END     VALUES ARE 'X', 'Y', 'Z'.                          xxxxxxxx
+000000   88  MID     VALUES ARE 'M'.                                    xxxxxxxx

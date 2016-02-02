@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ddm>
+	<namespace name="TEMP_SPACE1">
+		<data-object>
+			<name>OBJECT_1</name>
+			<logical-name>Object 1</logical-name>
+			<tags>Tag 11, Tag 21</tags>
+			<external-sources>External Source 1</external-sources>
+			<local-sources>
+				<local-source namespace="TEMP_SPACE1" name="OBJECT_2" />
+				<local-source namespace="TEMP_SPACE2" name="OBJECT_3"/>
+			</local-sources>
+			<summary>Object 1 Short Description</summary>
+			<description>Object 1 Long Description</description>			
+			<extended-property>
+				<property name="field1" value="Field 1"></property>
+			</extended-property>
+			<attributes>
+				<attribute>
+					<name>ATTRIBUTE_11</name>
+					<logical-name>Attribute 11</logical-name>
+					<position>1</position>
+					<tags>Tag 111, Tag 211</tags>
+					<data-type>VARCHAR(30)</data-type>
+					<common-type>AN(30)</common-type>
+					<key>Y</key>
+					<required>n</required>
+					<parent-attribute></parent-attribute>
+					<default-value/>
+					<external-sources>External Source 11</external-sources>
+					<local-sources></local-sources>
+					<summary>Attribute 11 Short Description</summary>
+					<description>Attribute 11 Long Description</description>
+				</attribute>
+			</attributes>
+		</data-object>
+		<data-object>
+			<name>OBJECT_2</name>
+			<logical-name>Object 2</logical-name>
+			<tags>Tag 12, Tag 22</tags>
+			<external-sources>External Source 2</external-sources>
+			<local-sources></local-sources>
+			<summary>Object 2 Short Description</summary>
+			<description>Object 2 Long Description</description>
+	   </data-object> 
+   </namespace>
+   <namespace name="TEMP_SPACE2">
+		<data-object>
+			<name>OBJECT_3</name>
+			<logical-name>Object 3</logical-name>
+			<tags>Tag 13, Tag 23</tags>
+			<external-sources>External Source 3</external-sources>
+			<local-sources></local-sources>
+			<summary>Object 3 Short Description</summary>
+			<description>Object 3 Long Description</description>
+			<attributes>
+				<attribute>
+					<name>ATTRIBUTE_31</name>
+					<logical-name>Attribute 31</logical-name>
+					<position>1</position>
+					<tags>Tag 131, Tag 231</tags>
+					<data-type>VARCHAR(30)</data-type>
+					<common-type>AN(30)</common-type>
+					<key>Y</key>
+					<required>y</required>
+					<parent-attribute>TEMP_SPACE1.OBJECT_1.ATTRIBUTE_11</parent-attribute>
+					<default-value>''</default-value>
+					<external-sources>External Source 31</external-sources>
+					<local-sources>
+						<local-source namespace="TEMP_SPACE1" object-name="OBJECT_1" attribute-name="ATTRIBUTE_11" />
+					</local-sources>
+					<codes>
+						<code value="A" description="ALL" />
+					</codes>
+					<summary>Attribute 31 Short Description</summary>
+					<description>Attribute 31 Long Description</description>
+					<extended-property>
+						<property name="afield1" value="A Field 31"></property>
+					</extended-property>
+				</attribute>
+			</attributes>
+		</data-object>
+		<data-object>
+			<name>OBJECT_4</name>
+			<logical-name>Object 4</logical-name>
+			<tags>Tag 14, Tag 24</tags>
+			<external-sources>External Source 4</external-sources>
+			<summary>Object 4 Short Description</summary>
+			<description>Object 4 Long Description</description>
+			<attributes>
+				<attribute>
+					<name>ATTRIBUTE_41</name>
+					<logical-name>Attribute 41</logical-name>
+					<position>1</position>
+					<tags>Tag 141, Tag 241</tags>
+					<data-type>VARCHAR(30)</data-type>
+					<common-type>AN(30)</common-type>
+					<key>Y</key>
+					<required>Y</required>
+					<parent-attribute></parent-attribute>
+					<default-value/>
+					<external-sources>External Source 41</external-sources>
+					<local-sources></local-sources>
+					<summary>Attribute 41 Short Description</summary>
+					<description>Attribute 41 Long Description</description>
+				</attribute>
+				<attribute>
+					<name>ATTRIBUTE_42</name>
+					<logical-name>Attribute 42</logical-name>
+					<position>2</position>
+					<tags>Tag 142, Tag 242</tags>
+					<data-type>VARCHAR(30)</data-type>
+					<common-type>AN(30)</common-type>
+					<key>N</key>
+					<required>Y</required>
+					<parent-attribute></parent-attribute>
+					<default-value/>
+					<external-sources>External Source 42</external-sources>
+					<local-sources></local-sources>
+					<summary><![CDATA[Attribute 42 <html/>Short Description]]></summary>
+					<description>Attribute 42 Long Description</description>
+				</attribute>
+			</attributes>
+	   </data-object> 
+   </namespace>
+</ddm>
