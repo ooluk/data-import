@@ -30,7 +30,9 @@ import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.document.TableCollection;
 import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
+import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
 import com.amazonaws.services.dynamodbv2.model.ListTablesResult;
+import com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException;
 import com.amazonaws.services.dynamodbv2.model.TableDescription;
 import com.ooluk.ddm.dataimport.CaseMode;
 import com.ooluk.ddm.dataimport.MessageKey;
@@ -42,6 +44,31 @@ import com.ooluk.ddm.dataimport.rule.RulesEngine;
 import com.ooluk.ddm.dataimport.workers.AbstractRuleBasedDataObjectReader;
 
 /**
+ * <p>
+ * DynamoDBDataObjectReader is an implementation of the DataObjectReader for Amazon DynamoDB databases.
+ * DynamoDBDataObjectReader extends the RuleBasedDataObjectReader thus leveraging the rules facility.
+ * 
+ * <p>
+ * This reader can be configured for three scopes of scanning for DataObjects:
+ * <ul>
+ * <li>REGION: All tables in the region
+ * <li>TABLES: Specific Table(s)
+ * </ul>
+ * </p>
+ * 
+ * <p>
+ * This implementation uses three types of rules
+ * <ul>
+ * <li>Namespace rules
+ * <li>Data Type rules
+ * <li>Common Type rules
+ * </p>
+ * 
+ * <p>
+ * This class uses new ProfileCredentialsProvider() thus picking the credentials from the standard location. A future
+ * version may the credentials / credentials file location to be supplied as parameters.
+ * </p>
+ * 
  * @author Siddhesh Prabhu
  * @since 1.0
  * 
@@ -289,7 +316,14 @@ public class DynamoDBDataObjectReader extends AbstractRuleBasedDataObjectReader 
         if (tablesItr.hasNext()) {
         	String tableName = tablesItr.next();
         	Table table = dynamoDB.getTable(tableName);
-        	dObj = createDataObject(table);
+        	try {
+        		dObj = createDataObject(table);
+        	} catch (ResourceNotFoundException e) {
+    			// TODO Internationalize 
+    			String msg = "Table " + table.getTableName() + " not found";
+    			super.appendStatusLine(msg);
+    			throwImportException(msg);			
+    		}
         }
         return dObj;
 		
@@ -319,11 +353,18 @@ public class DynamoDBDataObjectReader extends AbstractRuleBasedDataObjectReader 
         // Table Name
     	String oName = tableDesc.getTableName();
     	
+    	// Partitioning Key
+    	List<String> _keys = new ArrayList<>();
+    	List<KeySchemaElement> keys = tableDesc.getKeySchema();
+    	for (KeySchemaElement key : keys) {
+    		_keys.add(key.getAttributeName());
+    	}
+    	
     	// Attributes
     	List<ScannedAttribute> attributes = new ArrayList<>();
 		List<AttributeDefinition> list = tableDesc.getAttributeDefinitions();
 		for (AttributeDefinition defn : list) {
-			attributes.add(createAttribute(defn));
+			attributes.add(createAttribute(defn, _keys));
 		}
 		        
         // Create ScannedDataObject
@@ -339,13 +380,16 @@ public class DynamoDBDataObjectReader extends AbstractRuleBasedDataObjectReader 
 	 * 
 	 * @param attrDefinition
 	 *            attribute definition
+	 * @param key
+	 * 			  partitioning HASH key for the table
 	 *            
 	 * @return ScannedAttribute representing a DynamoDB attribute.
 	 */
-    private ScannedAttribute createAttribute(AttributeDefinition attrDefinition) {
+    private ScannedAttribute createAttribute(AttributeDefinition attrDefinition, List<String> keys) {
     	
     	// Attribute Name
     	String aName = attrDefinition.getAttributeName();
+    	boolean isKey = keys.contains(aName);
 
         String _type = attrDefinition.getAttributeType();
 
@@ -372,7 +416,8 @@ public class DynamoDBDataObjectReader extends AbstractRuleBasedDataObjectReader 
     	ScannedAttribute attr = new ScannedAttribute();
     	attr.setName(aName);
     	attr.setDataType(aDataType);
-    	attr.setCommonType(aCommonType);    	
+    	attr.setCommonType(aCommonType);
+    	attr.setKey(isKey);
     	return attr;
     }
     
