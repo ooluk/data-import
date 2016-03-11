@@ -290,7 +290,6 @@ public class JDBCDataObjectReader extends AbstractRuleBasedDataObjectReader {
 			super.appendStatusLine(msg);
 			throwImportException(msg);
 		}
-		// This creates an immutable list but we are okay with that.
 		schemas = Arrays.asList(csList.split("(\\s)*,(\\s)*"));
 	}
 
