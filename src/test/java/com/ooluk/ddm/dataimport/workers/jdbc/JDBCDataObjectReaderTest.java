@@ -55,7 +55,6 @@ public class JDBCDataObjectReaderTest {
 	private static final int DB_OBJ_COUNT = DDM_SCHEMA_OBJ_COUNT + TEST_SCHEMA_OBJ_COUNT;
 	private static final int DB_ATTR_COUNT = DDM_SCHEMA_ATTR_COUNT + TEST_SCHEMA_ATTR_COUNT;
 	
-
 	private RuleStore ruleStore;
 	private Properties ds;
 	
