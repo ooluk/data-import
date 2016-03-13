@@ -10,3 +10,4 @@ The Data Import API documentation can be found at [here.](https://oolukdocs.atla
 - JDBC Database Metadata
 - COBOL Copybooks (limited support)
 - Proprietary XML Format
+- Amazon DynamoDB
